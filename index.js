@@ -7,7 +7,6 @@ require('./models/Users');
 require('./services/passport');
 
 mongoose.connect(mongoURI);
-
 const app = express();
 app.use(
     cookieSession({

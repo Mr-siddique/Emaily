@@ -1,8 +1,8 @@
+// const { googleClientID, googleClientSecret, facebookClientID, facebookClientSecret } = require('../config/keys');
+// const FacebookStrategy = require('passport-facebook').Strategy;
 const passport = require('passport');
 const googleStrategy = require('passport-google-oauth20').Strategy;
-// const FacebookStrategy = require('passport-facebook').Strategy;
 const { googleClientID, googleClientSecret } = require('../config/keys');
-// const { googleClientID, googleClientSecret, facebookClientID, facebookClientSecret } = require('../config/keys');
 const mongoose = require('mongoose');
 const User = mongoose.model('users');
 
@@ -34,6 +34,9 @@ passport.use(new googleStrategy({
         done(null, user);
     }
 }));
+
+
+
 // passport.use(new FacebookStrategy({
 //     clientID: facebookClientID,
 //     clientSecret: facebookClientSecret,
