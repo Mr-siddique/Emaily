@@ -2,13 +2,7 @@ const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const FacebookStrategy = require("passport-facebook").Strategy;
 const mongoose = require("mongoose");
-// const {
-//   googleClientID,
-//   googleClientSecret,
-//   facebookClientID,
-//   facebookClientSecret,
-// } = require("../config/keys");
-const keys= require('../config/keys');
+const keys = require("../config/keys");
 const User = mongoose.model("users");
 
 passport.serializeUser((user, done) => {
@@ -17,7 +11,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (_id, done) => {
   try {
-    const user = await User.findById( _id );
+    const user = await User.findById(_id);
     done(null, user);
   } catch (err) {
     console.log(err.message);
@@ -30,7 +24,7 @@ passport.use(
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
       callbackURL: "/auth/google/callback",
-      proxy: true
+      proxy: true,
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
@@ -38,13 +32,10 @@ passport.use(
           facebookId: "",
           googleId: profile.id,
         });
-        if (existingUser) {
-          done(null, existingUser);
-        } else {
-          const user = new User({ facebookId: "", googleId: profile.id });
-          await user.save();
-          done(null, user);
-        }
+        if (existingUser) return done(null, existingUser);
+        const user = new User({ facebookId: "", googleId: profile.id });
+        await user.save();
+        done(null, user);
       } catch (err) {
         done(err, null);
       }
@@ -65,13 +56,10 @@ passport.use(
           facebookId: profile.id,
           googleId: "",
         });
-        if (existingUser) {
-          done(null, existingUser);
-        } else {
-          const user = new User({ facebookId: profile.id, googleId: "" });
-          await user.save();
-          done(null, user);
-        }
+        if (existingUser) return done(null, existingUser);
+        const user = new User({ facebookId: profile.id, googleId: "" });
+        await user.save();
+        done(null, user);
       } catch (err) {
         done(err, null);
       }

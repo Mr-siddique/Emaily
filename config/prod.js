@@ -4,5 +4,8 @@ module.exports={
     mongoURI:process.env.MONGO_URI,
     cookieKey:process.env.COOKIE_KEY,
     facebookClientID:'295851969012906',
-    facebookClientSecret:'c03c3e78e8f889d8b73cc1d58574b797'
+    facebookClientSecret:'c03c3e78e8f889d8b73cc1d58574b797',
+    clientSideURL:'',
+    stripePublishableKey:process.env.STRIPE_PUBLISHABLE_KEY,
+    stripeSecretKey:STRIPE_SECRET_KEY
 };
