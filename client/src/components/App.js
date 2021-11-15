@@ -4,11 +4,13 @@ import * as actions from "../action";
 import { useDispatch } from "react-redux";
 import Header from "./header";
 import Landing from './landing'
-const Dashboard = () => <h2>Dashboard</h2>;
-const SurveyNew = () => <h2>SurveyNew</h2>;
+import Dashboard from "./Dashboard";
+import SurveyNew from "./surveys/SurveyNew";
+
+
 const App = () => {
   const dispatch=useDispatch();
-  dispatch(actions.fetchUser())
+  dispatch(actions.fetchUser());
   return (
     <div className="container">
       <BrowserRouter>

@@ -1,16 +1,15 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { backendURL } from "../url";
 import Payments from "./payments";
 
 const Header = () => {
-  const dispatch = useDispatch();
   const state = useSelector((state) => state.auth);
   return (
     <nav>
       <div className="nav-wrapper">
-        <Link to={state ? "/surveys  " : "/"} className="left brand-logo">
+        <Link to={state ? "/surveys" : "/"} className="left brand-logo">
           Emaily
         </Link>
         {state !== null && (
