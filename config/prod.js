@@ -5,7 +5,7 @@ module.exports={
     cookieKey:process.env.COOKIE_KEY,
     facebookClientID:'295851969012906',
     facebookClientSecret:'c03c3e78e8f889d8b73cc1d58574b797',
-    clientSideURL:'/',
+    clientSideURL:'https://powerful-brushlands-97812.herokuapp.com',
     stripePublishableKey:process.env.STRIPE_PUBLISHABLE_KEY,
     stripeSecretKey:process.env.STRIPE_SECRET_KEY,
     sendBlueKey:process.env.SEND_BLUE_KEY,
