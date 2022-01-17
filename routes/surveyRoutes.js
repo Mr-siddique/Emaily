@@ -2,12 +2,12 @@ const requireLogin = require("../middlewares/requireLogin");
 const { Path } = require("path-parser");
 const { URL } = require("url");
 const requireCredits = require("../middlewares/requireCredits");
-// const Mailer = require("../services/Mailer");
 const mongoose = require("mongoose");
 const Survey = mongoose.model("surveys");
 const surveyTemplate = require("../services/emailTemplates/surveyTemplate");
 const sendInBlueApi = require("sib-api-v3-sdk");
 const defaultClient = sendInBlueApi.ApiClient.instance;
+// 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 
 const apiKey = defaultClient.authentications["api-key"];
 apiKey.apiKey = require("../config/keys").sendBlueKey;
 const apiInstance = new sendInBlueApi.TransactionalEmailsApi();
@@ -17,6 +17,7 @@ module.exports = (app) => {
     res.send("Thanks for voting!");
   });
   app.post("/api/surveys/webhooks", (req, res) => {
+
     const pathname = new URL(req.body.link).pathname;
     const p = new Path("/api/surveys/:surveyId/:choice");
     const match = p.test(pathname);
